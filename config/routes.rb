@@ -2,7 +2,7 @@ Rails.application.routes.draw do
 
 
   get 'current_user', to: 'pages#current_user'
-  get 'get_data', to: 'pages#get_all_data'
+  get 'users', to: 'pages#get_users'
 
   devise_for :users
   devise_scope :user do

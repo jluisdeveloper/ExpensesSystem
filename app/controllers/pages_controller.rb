@@ -1,5 +1,5 @@
 class PagesController < ApplicationController
-  before_action :authenticate_user!, only: [:current_user, :get_all_data]
+  before_action :authenticate_user!, only: [:current_user, :get_categories, :get_users]
 
   def index
   end
@@ -11,19 +11,9 @@ class PagesController < ApplicationController
     }, status: :ok
   end
 
-  def get_all_data
+  def get_users
     @users = User.all
-    @categories = Category.all
-
     render :json => @users, :only => [:name, :id]
-
-    # render json: {
-    #     users: @users,
-    #     categories: @categories,
-    # }, status: :ok
   end
-
-  #render :json => @programs, :include => {:insurer => {:only => :name}}, :except => [:created_at, :updated_at]
-
 
 end

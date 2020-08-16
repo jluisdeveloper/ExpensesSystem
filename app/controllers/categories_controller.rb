@@ -6,9 +6,7 @@ class CategoriesController < ApplicationController
   # GET /materials.json
   def index
     @categories = Category.all
-    render json: {
-        categories: @categories,
-    }, status: :ok
+    render :json => @categories, :except => [:created_at, :updated_at]
   end
 
   # GET /materials/1
