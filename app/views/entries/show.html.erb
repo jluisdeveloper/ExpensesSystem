@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Day:</strong>
+  <%= @entry.day %>
+</p>
+
+<p>
+  <strong>Totalexpenses:</strong>
+  <%= @entry.totalExpenses %>
+</p>
+
+<p>
+  <strong>Cash:</strong>
+  <%= @entry.cash %>
+</p>
+
+<p>
+  <strong>Totalentry:</strong>
+  <%= @entry.totalEntry %>
+</p>
+
+<p>
+  <strong>Category:</strong>
+  <%= @entry.category_id %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @entry.user_id %>
+</p>
+
+<%= link_to 'Edit', edit_entry_path(@entry) %> |
+<%= link_to 'Back', entries_path %>
