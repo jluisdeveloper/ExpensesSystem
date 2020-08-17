@@ -13,7 +13,7 @@ class PagesController < ApplicationController
 
   def get_users
     @users = User.all
-    render :json => @users, :only => [:name, :id]
+    render :json => @users
   end
 
 end

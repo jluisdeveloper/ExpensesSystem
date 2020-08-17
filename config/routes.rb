@@ -10,6 +10,7 @@ Rails.application.routes.draw do
       root 'pages#index', as: :authenticated_root
       resources :categories
       resources :entries
+      resources :usuarios, controller: 'users'
       #match '*path', to: 'panel/pages#dashboard', via: :all
     end
     unauthenticated :user do
