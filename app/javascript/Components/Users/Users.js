@@ -45,6 +45,10 @@ class Users extends Component {
         console.log(error);
       })
   }
+  //
+  // registerUser = async (newUser) => {
+  //   console.log(newUser)
+  // }
 
   render() {
 

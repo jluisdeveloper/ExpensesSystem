@@ -1,9 +1,9 @@
 class UsersController < ApplicationController
-  before_action :set_entry, only: [:show, :edit, :update, :destroy]
+  before_action :set_user, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
 
-  # GET /entries
-  # GET /entries.json
+  # GET /users
+  # GET /users.json
   def index
     @users = User.all
     render :json => @users
@@ -11,39 +11,43 @@ class UsersController < ApplicationController
     #render :json => @programs, :include => {:insurer => {:only => :name}}, :except => [:created_at, :updated_at]
   end
 
-  # GET /entries/1
-  # GET /entries/1.json
+  # GET /users/1
+  # GET /users/1.json
   def show
   end
 
-  # GET /entries/new
+  # GET /users/new
   def new
     @user = User.new
   end
 
-  # GET /entries/1/edit
+  # GET /users/1/edit
   def edit
   end
 
-  # POST /entries
-  # POST /entries.json
+  # POST /users
+  # POST /users.json
   def create
-    @user = User.new(user_params)
-    @user.skip_confirmation!
-    @user.save
+    @user = User.new
+    @user.name = params[:name]
+    @user.dni = params[:dni]
+    @user.email = params[:email]
+    @user.password = params[:password]
+    @user.password_confirmation = params[:password_confirmation]
+    @user.save!
 
     render json: { params: params, notice: 'Usuario registrado exitosamente' }
   end
 
-  # PATCH/PUT /entries/1
-  # PATCH/PUT /entries/1.json
+  # PATCH/PUT /users/1
+  # PATCH/PUT /users/1.json
   def update
     @user.update(user_params)
     render json: { notice: 'Usuario actualizado exitosamente' }
   end
 
-  # DELETE /entries/1
-  # DELETE /entries/1.json
+  # DELETE /users/1
+  # DELETE /users/1.json
   def destroy
     @user.destroy
     render json: { notice: 'Usuario eliminado exitosamente' }
@@ -51,7 +55,7 @@ class UsersController < ApplicationController
 
   private
   # Use callbacks to share common setup or constraints between actions.
-  def set_entry
+  def set_user
     @user = User.find(params[:id])
   end
 
