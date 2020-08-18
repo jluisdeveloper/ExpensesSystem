@@ -45,10 +45,26 @@ class Users extends Component {
         console.log(error);
       })
   }
-  //
-  // registerUser = async (newUser) => {
-  //   console.log(newUser)
-  // }
+
+  updateUser = async (user) => {
+    await axios.put('/usuarios/'+user.id.toString(), user)
+      .then((response)=>{
+        console.log(response);
+        this.getUsers();
+      }).catch((error)=>{
+        console.log(error);
+      })
+  }
+
+  deleteUser = async (user) => {
+    await axios.delete('/usuarios/'+user.id.toString(), user)
+      .then((response)=>{
+        console.log(response);
+        this.getUsers();
+      }).catch((error)=>{
+        console.log(error);
+      })
+  }
 
   render() {
 
@@ -67,7 +83,11 @@ class Users extends Component {
                   getUsers={ this.getUsers }
                   registerUser={ this.registerUser }
                 />
-                <ListUsers users={ users }/>
+                <ListUsers
+                  users={ users }
+                  deleteUser={ this.deleteUser }
+                  updateUser={ this.updateUser }
+                />
               </CCardBody>
             </CCard>
           </CCol>
